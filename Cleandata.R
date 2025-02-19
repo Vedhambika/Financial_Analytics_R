@@ -94,3 +94,41 @@ mean(data$density,na.rm=T) #removes the NA row
 data2=na.omit(data)
 summary(data2) #Problem here is that the command removes all NA rows
 
+
+## Creation of new variable
+data=iris
+head(data)
+colnames(data)
+data$petal.ratio=data$Petal.Length/data$Petal.Width
+head(data)
+data$sepal.ratio=data[,1]/data[,2]
+head(data)
+
+## Extracting Observations
+data=iris
+###Task: Extract observations where petal width >0.5 and species ==setosa
+
+data$Petal.Width>0.5 & data$Species=="setosa"
+
+data[data$Petal.Width>0.5 & data$Species=="setosa",]
+
+#print every row where species is "setosa"
+
+data[data$Species=="setosa",]
+head(data[data$Species=="setosa"])
+
+library(dplyr)
+data %>% filter(Petal.Width>0.5 & Species=="versicolor")
+
+data%>%filter(Petal.Width)
+
+#Summarizing the observations
+summary(iris)
+brief(iris)
+
+mean(data$Petal.Length)
+mean(data$Sepal.Length)
+summarize(iris,Petal.Length.mean=mean(Petal.Length),Sepal.Length.mean=mean(Sepal.Length))
+
+iris %>% summarize(Petal.Length.mean = mean(Petal.Length), Sepal.Length.mean=mean(Sepal.Length))
+
